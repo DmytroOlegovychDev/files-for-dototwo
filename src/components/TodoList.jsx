@@ -1,13 +1,16 @@
 import TodoItem from "./TodoItem";
-const TodoList = () => {
+const TodoList = (props) => {
+  const { tasks = [] } = props;
   const hasTasks = true;
   if (!hasTasks) {
     return <div className="todo__empty-message"></div>;
   }
   return (
     <ul className="todo__list">
-      <TodoItem />
-      <li className="todo__item todo-item">
+      {tasks.map((task) => (
+        <TodoItem className="todo__item" key={task.id} {...task} />
+      ))}
+      {/* <li className="todo__item todo-item">
         <input className="todo-item__checkbox" id="task-2" type="checkbox" />
         <label className="todo-item__label" htmlFor="task-2">
           Task 2
@@ -33,7 +36,7 @@ const TodoList = () => {
             />
           </svg>
         </button>
-      </li>
+      </li> */}
     </ul>
   );
 };
