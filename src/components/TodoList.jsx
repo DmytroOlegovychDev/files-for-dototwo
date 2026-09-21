@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 const TodoList = (props) => {
-  const { tasks = [] } = props;
+  const { tasks = [], onDeleteTaskButtonClick, onTasksCompleteChange } = props;
   const hasTasks = true;
   if (!hasTasks) {
     return <div className="todo__empty-message"></div>;
@@ -8,7 +8,13 @@ const TodoList = (props) => {
   return (
     <ul className="todo__list">
       {tasks.map((task) => (
-        <TodoItem className="todo__item" key={task.id} {...task} />
+        <TodoItem
+          className="todo__item"
+          key={task.id}
+          {...task}
+          onDeleteTaskButtonClick={onDeleteTaskButtonClick}
+          onTasksCompleteChange={onTasksCompleteChange}
+        />
       ))}
       {/* <li className="todo__item todo-item">
         <input className="todo-item__checkbox" id="task-2" type="checkbox" />
