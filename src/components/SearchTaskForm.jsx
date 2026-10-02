@@ -3,7 +3,8 @@ import Field from "./Field";
 const SearchTaskForm = (props) => {
   const { onSearchInput } = props;
   return (
-    <form className="todo__form">
+    <form className="todo__form"
+    onSubmit={(event)=> event.preventDefault()}>
       <Field
         className="todo__field"
         label="Search Task"
